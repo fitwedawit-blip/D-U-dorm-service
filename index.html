@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D/U Student Service - Dormitory Placement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="logo.png" alt="Dilla University Logo" class="logo">
+            <span class="site-name">D/U Student Service</span>
+        </div>
+        <div>
+            <!-- Protected Button: Opens login prompt first -->
+            <button class="btn btn-outline" id="viewListBtn">Student List (Admin Only)</button>
+            <button class="btn btn-green" id="headerSignInBtn">Advisor Login</button>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <main class="hero-section">
+        <div class="glass-card">
+            <h1>D/U Student Dormitory Placement</h1>
+            <p>Access your allocated block and room number instantly by verifying your student ID number.</p>
+            <button class="btn btn-green btn-large" id="checkDormBtn">Watch My Dorm Number</button>
+        </div>
+    </main>
+
+    <!-- Student List Modal (Protected - Hidden until logged in) -->
+    <div class="modal" id="studentListModal">
+        <div class="modal-content modal-large">
+            <span class="close-btn" id="closeListModal">&times;</span>
+            <h2>All Student Dormitory Placements</h2>
+            <div class="table-container">
+                <table id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>ID Number</th>
+                            <th>Full Name</th>
+                            <th>Gender</th>
+                            <th>Department</th>
+                            <th>Block</th>
+                            <th>Dorm</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+                        <!-- Dynamic Rows -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Admin Panel to Add Students -->
+            <div id="adminControls" class="admin-controls">
+                <h3>Advisor Dashboard: Add New Student</h3>
+                <form id="addStudentForm" class="admin-form">
+                    <input type="text" id="newId" placeholder="ID (e.g. RMSS-1000-/23)" required>
+                    <input type="text" id="newName" placeholder="Full Name" required>
+                    <select id="newGender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <input type="text" id="newDept" placeholder="Department" required>
+                    <input type="text" id="newBlock" placeholder="Block" required>
+                    <input type="text" id="newDorm" placeholder="Dorm" required>
+                    <button type="submit" class="btn btn-green">Add Student</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student ID Lookup Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeSearchModal">&times;</span>
+            <h2>Find Your Dormitory</h2>
+            <p>Enter your ID number to display placement details.</p>
+            
+            <form id="searchForm">
+                <div class="input-group">
+                    <label for="studentId">Student ID Number</label>
+                    <input type="text" id="studentId" placeholder="e.g., RMSS-2831-/23" required>
+                </div>
+                <button type="submit" class="btn btn-green full-width">Search Placement</button>
+            </form>
+
+            <div id="resultCard" class="result-card hidden">
+                <h3>Placement Details</h3>
+                <div class="result-grid">
+                    <div><strong>Name:</strong> <span id="resName">--</span></div>
+                    <div><strong>ID Number:</strong> <span id="resId">--</span></div>
+                    <div><strong>Gender:</strong> <span id="resGender">--</span></div>
+                    <div><strong>Department:</strong> <span id="resDept">--</span></div>
+                    <div><strong>Block Number:</strong> <span id="resBlock">--</span></div>
+                    <div><strong>Dorm Number:</strong> <span id="resDorm">--</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advisor Login Modal -->
+    <div class="modal" id="signInModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeSignInModal">&times;</span>
+            <h2>Advisor Login</h2>
+            <p>Sign in with your administrative credentials to access student records.</p>
+            <form id="signInForm">
+                <div class="input-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-green full-width">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
