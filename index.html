@@ -5,23 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D/U Student Service - Dormitory Placement</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header class="navbar">
         <div class="logo-container">
             <img src="logo.png" alt="Dilla University Logo" class="logo">
             <span class="site-name">D/U Student Service</span>
         </div>
         <div>
-            <!-- Protected Button: Opens login prompt first -->
-            <button class="btn btn-outline" id="viewListBtn">Student List (Admin Only)</button>
+            <button class="btn btn-outline" id="viewListBtn">Student List</button>
             <button class="btn btn-green" id="headerSignInBtn">Advisor Login</button>
         </div>
     </header>
 
-    <!-- Main Hero Section -->
     <main class="hero-section">
         <div class="glass-card">
             <h1>D/U Student Dormitory Placement</h1>
@@ -30,11 +28,62 @@
         </div>
     </main>
 
-    <!-- Student List Modal (Protected - Hidden until logged in) -->
+    <div class="modal" id="accessChoiceModal">
+        <div class="modal-content choice-modal">
+            <span class="close-btn" id="closeChoiceModal">&times;</span>
+            <h2>Select Access Type</h2>
+            <p>How would you like to view the student list?</p>
+            
+            <div class="choice-container">
+                <button class="btn btn-green btn-choice" id="choiceAdminBtn">Admin</button>
+                <span class="divider-text">OR</span>
+                <button class="btn btn-outline-dark btn-choice" id="choiceCustomBtn">Custom</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="customCodeModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeCustomModal">&times;</span>
+            <h2>Enter Access Code</h2>
+            <p>Enter your viewer code to display the student list (Read-Only).</p>
+            <form id="customCodeForm">
+                <div class="input-group">
+                    <label for="customCodeInput">Access Code</label>
+                    <input type="password" id="customCodeInput" placeholder="Enter code" required>
+                </div>
+                <button type="submit" class="btn btn-green full-width">View List</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="signInModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeSignInModal">&times;</span>
+            <h2>Administrator Login</h2>
+            <p>Sign in to manage student records.</p>
+            <form id="signInForm">
+                <div class="input-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" placeholder="Enter username" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="btn btn-green full-width">Sign In</button>
+            </form>
+        </div>
+    </div>
+
     <div class="modal" id="studentListModal">
         <div class="modal-content modal-large">
             <span class="close-btn" id="closeListModal">&times;</span>
-            <h2>All Student Dormitory Placements</h2>
+            <div class="list-header">
+                <h2>All Student Dormitory Placements</h2>
+                <span id="accessBadge" class="badge">--</span>
+            </div>
+            
             <div class="table-container">
                 <table id="studentTable">
                     <thead>
@@ -45,17 +94,15 @@
                             <th>Department</th>
                             <th>Block</th>
                             <th>Dorm</th>
-                            <th>Actions</th>
+                            <th class="admin-only hidden">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="studentTableBody">
-                        <!-- Dynamic Rows -->
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
             
-            <!-- Admin Panel to Add Students -->
-            <div id="adminControls" class="admin-controls">
+            <div id="adminControls" class="admin-controls hidden">
                 <h3>Advisor Dashboard: Add New Student</h3>
                 <form id="addStudentForm" class="admin-form">
                     <input type="text" id="newId" placeholder="ID (e.g. RMSS-1000-/23)" required>
@@ -73,7 +120,6 @@
         </div>
     </div>
 
-    <!-- Student ID Lookup Modal -->
     <div class="modal" id="searchModal">
         <div class="modal-content">
             <span class="close-btn" id="closeSearchModal">&times;</span>
@@ -102,26 +148,5 @@
         </div>
     </div>
 
-    <!-- Advisor Login Modal -->
-    <div class="modal" id="signInModal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeSignInModal">&times;</span>
-            <h2>Advisor Login</h2>
-            <p>Sign in with your administrative credentials to access student records.</p>
-            <form id="signInForm">
-                <div class="input-group">
-                    <label for="loginUsername">Username</label>
-                    <input type="text" id="loginUsername" placeholder="Enter username" required>
-                </div>
-                <div class="input-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter password" required>
-                </div>
-                <button type="submit" class="btn btn-green full-width">Sign In</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

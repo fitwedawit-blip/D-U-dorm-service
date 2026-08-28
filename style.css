@@ -20,6 +20,7 @@ body {
     flex-direction: column;
 }
 
+/* Navigation */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -48,6 +49,7 @@ body {
     font-weight: 700;
 }
 
+/* Buttons */
 .btn {
     border: none;
     cursor: pointer;
@@ -78,6 +80,18 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
+.btn-outline-dark {
+    background: transparent;
+    color: #333333;
+    border: 2px solid #333333;
+    padding: 10px 22px;
+}
+
+.btn-outline-dark:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
 .btn-danger {
     background: #d9534f;
     color: white;
@@ -96,6 +110,7 @@ body {
     padding: 12px;
 }
 
+/* Hero Content */
 .hero-section {
     flex: 1;
     display: flex;
@@ -115,6 +130,7 @@ body {
     width: 100%;
 }
 
+/* Modals */
 .modal {
     display: none;
     position: fixed;
@@ -135,7 +151,7 @@ body {
     padding: 30px;
     border-radius: 12px;
     width: 90%;
-    max-width: 500px;
+    max-width: 480px;
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
@@ -154,6 +170,31 @@ body {
     color: #666;
 }
 
+/* Choice Popup */
+.choice-modal {
+    text-align: center;
+}
+
+.choice-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-choice {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 1.1rem;
+}
+
+.divider-text {
+    font-weight: 700;
+    color: #777;
+}
+
+/* Forms & Inputs */
 .input-group {
     display: flex;
     flex-direction: column;
@@ -172,9 +213,26 @@ body {
     border-radius: 6px;
 }
 
-/* Table styling for Student List */
+/* Table */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.badge {
+    background: #6c757d;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
 .table-container {
-    margin-top: 20px;
+    margin-top: 15px;
     overflow-x: auto;
 }
 
@@ -196,7 +254,7 @@ th {
     color: white;
 }
 
-/* Admin Dashboard Form */
+/* Admin Dashboard */
 .admin-controls {
     margin-top: 25px;
     padding-top: 15px;
@@ -205,7 +263,7 @@ th {
 
 .admin-form {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     gap: 10px;
     margin-top: 10px;
 }
@@ -232,4 +290,3 @@ th {
 
 .hidden {
     display: none !important;
-}
